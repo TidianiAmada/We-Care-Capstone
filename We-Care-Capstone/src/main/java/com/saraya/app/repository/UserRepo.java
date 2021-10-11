@@ -10,6 +10,6 @@ import com.saraya.app.entity.AppUser;
 public interface UserRepo extends JpaRepository<AppUser, String> {
 	
 	// to view user profile by coach
-	AppUser findByAppUserId(String user_id);
+	AppUser findByUser_Id(String user_id);
 
 }

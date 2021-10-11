@@ -13,6 +13,6 @@ public interface CoachRepo extends JpaRepository<Coach, String> {
 	List<Coach> findAll();
 	
 	// to view coach profile by user
-	Coach findByCoachId(String coach_id);
+	Coach findByCoach_Id(String coach_id);
 
 }
