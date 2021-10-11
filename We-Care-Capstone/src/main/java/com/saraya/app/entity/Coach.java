@@ -17,7 +17,7 @@ import lombok.Data;
 public class Coach {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private String coach_id;
 	
 	private String name;
