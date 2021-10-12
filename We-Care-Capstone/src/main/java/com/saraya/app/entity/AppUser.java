@@ -38,9 +38,28 @@ public class AppUser {
 	
 	private String country;
 
+	public AppUser() {
+		super();
+	}
+
 	public AppUser(String name, String password, Gender gender, Date date_of_birth, String email, Integer pinCode,
 			String city, String state, String country) {
 		super();
+		this.name = name;
+		this.password = password;
+		this.gender = gender;
+		this.date_of_birth = date_of_birth;
+		this.email = email;
+		this.pinCode = pinCode;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+	}
+
+	public AppUser(String user_id, String name, String password, Gender gender, Date date_of_birth, String email,
+			Integer pinCode, String city, String state, String country) {
+		super();
+		this.user_id = user_id;
 		this.name = name;
 		this.password = password;
 		this.gender = gender;

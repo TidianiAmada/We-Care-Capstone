@@ -33,6 +33,10 @@ public class Coach {
 	
 	private String speciality;
 
+	public Coach() {
+		super();
+	}
+
 	public Coach(String name, String password, Gender gender, Date date_of_birth, Long mobile_number,
 			String speciality) {
 		super();
@@ -43,6 +47,19 @@ public class Coach {
 		this.mobile_number = mobile_number;
 		this.speciality = speciality;
 	}
+
+	public Coach(String coach_id, String name, String password, Gender gender, Date date_of_birth, Long mobile_number,
+			String speciality) {
+		super();
+		this.coach_id = coach_id;
+		this.name = name;
+		this.password = password;
+		this.gender = gender;
+		this.date_of_birth = date_of_birth;
+		this.mobile_number = mobile_number;
+		this.speciality = speciality;
+	}
+	
 	
 	
 

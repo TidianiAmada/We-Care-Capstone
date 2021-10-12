@@ -9,6 +9,9 @@ import com.saraya.app.entity.Coach;
 
 public interface AppointmentService {
 
+	public Coach coachSubscribe(Coach coach);
+	public AppUser userSubscribe(AppUser user);
+	
 	//1 -a need for user only
 	public Coach viewProfileOfCoach(String coach_id);
 	//1-b need for coach only

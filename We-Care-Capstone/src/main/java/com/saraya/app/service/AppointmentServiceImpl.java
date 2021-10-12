@@ -40,6 +40,17 @@ public class AppointmentServiceImpl implements AppointmentService{
 		this.appointmentRepo=appointmentRepository;
 	}
 	
+
+	@Override
+	public Coach coachSubscribe(Coach coach) {
+		return coachRepo.save(coach);
+	}
+	
+
+	@Override
+	public AppUser userSubscribe(AppUser user) {
+		return userRepo.save(user);
+	}
 	
 	
 	@Override
@@ -88,5 +99,7 @@ public class AppointmentServiceImpl implements AppointmentService{
 		appointmentRepo.delete(rdv);
 		
 	}
+
+
 
 }

@@ -30,6 +30,11 @@ public class Appointment {
 	}
 
 
+	public Appointment() {
+		super();
+	}
+
+
 	/**
 	 * @param booking_id the booking_id to set
 	 */
