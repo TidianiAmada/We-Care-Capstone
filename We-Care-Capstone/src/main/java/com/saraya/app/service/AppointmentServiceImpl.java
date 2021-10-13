@@ -19,26 +19,29 @@ import lombok.RequiredArgsConstructor;
 @Service @RequiredArgsConstructor 
 public class AppointmentServiceImpl implements AppointmentService{
 
+	@Autowired
 	private UserRepo userRepo;
+	@Autowired
 	private CoachRepo coachRepo;
+	@Autowired
 	private AppointmentRepo appointmentRepo;
 	
 	// Contructor injection
 	
-	@Autowired
-	public AppointmentServiceImpl(UserRepo userRepository) {
-		this.userRepo=userRepository;
-	}
-	
-	@Autowired
-	public AppointmentServiceImpl(CoachRepo coachRepository) {
-		this.coachRepo=coachRepository;
-	}
-	
-	@Autowired
-	public AppointmentServiceImpl(AppointmentRepo appointmentRepository) {
-		this.appointmentRepo=appointmentRepository;
-	}
+//	@Autowired
+//	public AppointmentServiceImpl(UserRepo userRepository) {
+//		this.userRepo=userRepository;
+//	}
+//	
+//	@Autowired
+//	public AppointmentServiceImpl(CoachRepo coachRepository) {
+//		this.coachRepo=coachRepository;
+//	}
+//	
+//	@Autowired
+//	public AppointmentServiceImpl(AppointmentRepo appointmentRepository) {
+//		this.appointmentRepo=appointmentRepository;
+//	}
 	
 
 	@Override
@@ -55,12 +58,12 @@ public class AppointmentServiceImpl implements AppointmentService{
 	
 	@Override
 	public Coach viewProfileOfCoach(String coach_id) {
-		return coachRepo.findByCoach_Id(coach_id);
+		return coachRepo.findByCoachId(coach_id);
 	}
 
 	@Override
 	public AppUser viewProfileOfAppUser(String user_id) {
-		return userRepo.findByUser_Id(user_id);
+		return userRepo.findByUserId(user_id);
 	}
 
 	@Override
@@ -76,26 +79,28 @@ public class AppointmentServiceImpl implements AppointmentService{
 
 	@Override
 	public List<Appointment> viewUpcomingAppointmentsForUser(String user_id) {
-		return appointmentRepo.findAllByUser_Id(user_id);
+		AppUser user= userRepo.findByUserId(user_id);
+		return appointmentRepo.findAllByAppUser(user);
 	}
 
 	@Override
 	public List<Appointment> viewUpcomingAppointmentsForCoach(String coach_id) {
-		return appointmentRepo.findAllByCoach_Id(coach_id);
+		Coach coach=coachRepo.findByCoachId(coach_id);
+		return appointmentRepo.findAllByCoach(coach);
 	}
 
 	@Override
 	public Appointment rescheduleAppointment(Integer booking_id, LocalDate appointment_date) {
-		Appointment rdv=appointmentRepo.findByBooking_Id(booking_id);
+		Appointment rdv=appointmentRepo.findByBookingId(booking_id);
 		// how to update
-		rdv.setAppointment_date(appointment_date);
+		rdv.setAppointmentDate(appointment_date);
 		appointmentRepo.save(rdv);
 		return rdv;
 	}
 
 	@Override
 	public void cancelAppointment(Integer booking_id) {
-		Appointment rdv=appointmentRepo.findByBooking_Id(booking_id);
+		Appointment rdv=appointmentRepo.findByBookingId(booking_id);
 		appointmentRepo.delete(rdv);
 		
 	}

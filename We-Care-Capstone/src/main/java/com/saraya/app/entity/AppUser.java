@@ -17,7 +17,7 @@ import lombok.Data;
 public class AppUser {
 	@Id
 	@Column
-	private String user_id;
+	private String userId;
 	
 	private String name;
 	
@@ -59,7 +59,7 @@ public class AppUser {
 	public AppUser(String user_id, String name, String password, Gender gender, Date date_of_birth, String email,
 			Integer pinCode, String city, String state, String country) {
 		super();
-		this.user_id = user_id;
+		this.userId = user_id;
 		this.name = name;
 		this.password = password;
 		this.gender = gender;

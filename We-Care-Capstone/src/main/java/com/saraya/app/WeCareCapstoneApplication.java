@@ -37,6 +37,7 @@ public class WeCareCapstoneApplication {
 			Coach ch1 =appointmentService.viewProfileOfCoach("C001");
 			Coach ch2 =appointmentService.viewProfileOfCoach("C002");
 			// new LocalDate(2022,12, 12)
+			
 			Appointment book=new Appointment(null, "3H",us1 ,ch1 );
 			appointmentService.bookAppointment(book);
 			Appointment book2=new Appointment(null, "3H",us2 ,ch1 );

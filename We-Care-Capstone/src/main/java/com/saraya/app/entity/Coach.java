@@ -18,7 +18,7 @@ public class Coach {
 	
 	@Id
 	@Column
-	private String coach_id;
+	private String coachId;
 	
 	private String name;
 	
@@ -51,7 +51,7 @@ public class Coach {
 	public Coach(String coach_id, String name, String password, Gender gender, Date date_of_birth, Long mobile_number,
 			String speciality) {
 		super();
-		this.coach_id = coach_id;
+		this.coachId = coach_id;
 		this.name = name;
 		this.password = password;
 		this.gender = gender;

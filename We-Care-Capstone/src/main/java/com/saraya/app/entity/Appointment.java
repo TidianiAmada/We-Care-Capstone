@@ -2,14 +2,13 @@ package com.saraya.app.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -18,46 +17,64 @@ public class Appointment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer booking_id;
-	private LocalDate appointment_date;
+	private Integer bookingId;
+	private LocalDate appointmentDate;
 	private String slot;
 	
-	/**
-	 * @return the booking_id
-	 */
-	public Integer getBooking_id() {
-		return booking_id;
+
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId")
+	private AppUser appUser;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "coachId")
+	private Coach coach;
+	
+	
+	public Appointment(LocalDate appointment_date, String slot, AppUser appUser, Coach coach) {
+		super();
+		this.appointmentDate = appointment_date;
+		this.slot = slot;
+		this.appUser = appUser;
+		this.coach = coach;
 	}
-
-
+	
 	public Appointment() {
 		super();
 	}
 
 
+	
+
+
+	
 	/**
-	 * @param booking_id the booking_id to set
+	 * @return the bookingId
 	 */
-	public void setBooking_id(Integer booking_id) {
-		this.booking_id = booking_id;
+	public Integer getBookingId() {
+		return bookingId;
 	}
 
-
 	/**
-	 * @return the appointment_date
+	 * @param bookingId the bookingId to set
 	 */
-	public LocalDate getAppointment_date() {
-		return appointment_date;
+	public void setBookingId(Integer bookingId) {
+		this.bookingId = bookingId;
 	}
 
-
 	/**
-	 * @param appointment_date the appointment_date to set
+	 * @return the appointmentDate
 	 */
-	public void setAppointment_date(LocalDate appointment_date) {
-		this.appointment_date = appointment_date;
+	public LocalDate getAppointmentDate() {
+		return appointmentDate;
 	}
 
+	/**
+	 * @param appointmentDate the appointmentDate to set
+	 */
+	public void setAppointmentDate(LocalDate appointmentDate) {
+		this.appointmentDate = appointmentDate;
+	}
 
 	/**
 	 * @return the slot
@@ -103,23 +120,6 @@ public class Appointment {
 	 * @param coach the coach to set
 	 */
 	public void setCoach(Coach coach) {
-		this.coach = coach;
-	}
-
-
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private AppUser appUser;
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "coach_id")
-	private Coach coach;
-	
-	
-	public Appointment(LocalDate appointment_date, String slot, AppUser appUser, Coach coach) {
-		super();
-		this.appointment_date = appointment_date;
-		this.slot = slot;
-		this.appUser = appUser;
 		this.coach = coach;
 	}
 	

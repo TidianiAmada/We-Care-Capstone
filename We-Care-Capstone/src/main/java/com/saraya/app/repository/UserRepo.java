@@ -3,13 +3,17 @@ package com.saraya.app.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.saraya.app.entity.AppUser;
 
 
+@Repository
 public interface UserRepo extends JpaRepository<AppUser, String> {
 	
 	// to view user profile by coach
-	AppUser findByUser_Id(String user_id);
+//	@Query("Select * from app_user where appuser.user_id=")
+	AppUser findByUserId(String userId);
 
 }
