@@ -123,6 +123,12 @@ public class Appointment {
 	public void setCoach(Coach coach) {
 		this.coach = coach;
 	}
+
+	@Override
+	public String toString() {
+		return "Appointment Info : bookingId=" + bookingId + ", appointmentDate=" + appointmentDate + ", slot= " + slot
+				+ ", appUser=" + appUser.getName()+" with contact  "+appUser.getUsername() + ", coach=" + coach.getName() + "]";
+	}
 	
 	
 

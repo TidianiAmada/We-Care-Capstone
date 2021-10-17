@@ -48,7 +48,8 @@ public class AppointmentServiceImpl implements AppointmentService{
 	public Appointment bookAppointment(Appointment appointment) {
 		// TODO is it better to pass an appointment as argument?? or Its parameters?
 		Appointment rdv=appointmentRepo.save(appointment);
-		mailService.send(rdv.getCoach().getUsername(), null); //TODO build email for new booking
+		mailService.send(rdv.getCoach().getUsername(), mailService.buildEmail(rdv.getCoach().getName(), rdv.toString())); 
+		//TODO build email for new booking
 		return rdv;
 		
 	}
